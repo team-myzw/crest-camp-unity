@@ -15,6 +15,7 @@ namespace SIGVerse.ROSBridge
 		[System.Serializable]
 		public class PlaceConceptMsg : ROSMessage
 		{
+			public string name;
 			public double x;
 			public double y;
 			public double vx;
@@ -23,14 +24,16 @@ namespace SIGVerse.ROSBridge
 
 			public PlaceConceptMsg()
 			{
+				this.name = "";
 				this.x = 0.0;
 				this.y = 0.0;
 				this.vx = 0.0;
 				this.vy = 0.0;
 			}
 
-			public PlaceConceptMsg(double x, double y, double vx, double vy)
+			public PlaceConceptMsg(string name, double x, double y, double vx, double vy)
 			{
+				this.name = name;
 				this.x = x;
 				this.y = y;
 				this.vx = vx;
@@ -44,7 +47,7 @@ namespace SIGVerse.ROSBridge
 
 			new public static string GetMD5Hash()
 			{
-				return "d181fc9f1eeb211fc87744356ce417a1";
+				return "f48ada863ae6dd3e9a737b7add6e5dea";
 			}
 		} // class PlaceConceptMsg
 	} // namespace handyman

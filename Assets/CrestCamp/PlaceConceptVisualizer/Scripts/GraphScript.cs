@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SIGVerse.Competition.CrestCamp;
-
 public class GraphScript : MonoBehaviour, IRosMsgReceiveHandler
 {
 	public float xmin = -3f;
@@ -106,7 +105,7 @@ public class GraphScript : MonoBehaviour, IRosMsgReceiveHandler
 		this.distributaion.transform.position = new Vector3( -(float)placeConceptMsg.y, -0.15f, (float)placeConceptMsg.x);
 		this.distributionText.transform.position = new Vector3(-(float)placeConceptMsg.y, 0.5f, (float)placeConceptMsg.x);
 
-		this.distributionText.GetComponent<TextMesh>().text = "test text";
+		this.distributionText.GetComponentInChildren<TextMesh>().text = placeConceptMsg.name;
 
 		//dist:正規分布
 		dist = new NormalDistribution();

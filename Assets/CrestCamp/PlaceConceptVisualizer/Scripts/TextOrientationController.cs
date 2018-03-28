@@ -15,6 +15,6 @@ public class TextOrientationController : MonoBehaviour
 	void Update ()
 	{
 		Vector3 sceneCameraPosition = SceneView.lastActiveSceneView.camera.transform.position;
-		this.transform.localRotation = Quaternion.LookRotation(sceneCameraPosition);
+		this.transform.localRotation = Quaternion.LookRotation (sceneCameraPosition);
 	}
 }
