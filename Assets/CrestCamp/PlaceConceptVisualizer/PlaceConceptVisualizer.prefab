@@ -79,3 +79,5 @@ MonoBehaviour:
   pointSize: 0.05
   distributionPrefab: {fileID: 1986780704569304, guid: cf3045c5fb27ccd4aa52a94a9937db27,
     type: 2}
+  textMeshPrefab: {fileID: 1038670768860342, guid: 1e924d16164736e4c914e091ba551ccf,
+    type: 2}

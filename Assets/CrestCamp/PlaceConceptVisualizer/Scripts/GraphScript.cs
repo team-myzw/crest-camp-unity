@@ -2,7 +2,6 @@
 using System.Collections;
 using SIGVerse.Competition.CrestCamp;
 
-
 public class GraphScript : MonoBehaviour, IRosMsgReceiveHandler
 {
 	public float xmin = -3f;
@@ -17,12 +16,14 @@ public class GraphScript : MonoBehaviour, IRosMsgReceiveHandler
 	public float pointSize = 0.05f;
 
 	public GameObject distributionPrefab;
+	public GameObject distributionTextPrefab;
 
 	private NormalDistribution dist;
 	private ParticleSystem.Particle[] points;
 	private bool changed;
 
-	GameObject distributaion;
+	private GameObject distributaion;
+	private GameObject distributionText;
 
 	void Start()
 	{
@@ -94,14 +95,19 @@ public class GraphScript : MonoBehaviour, IRosMsgReceiveHandler
 	}
 
 	public void OnReceiveRosMessage(SIGVerse.ROSBridge.CrestCamp.PlaceConceptMsg placeConceptMsg)
-	{   
-
+	{
 		pointColor =new Color(Random.value, Random.value, Random.value, 1.0f);
 
 		//インスタンス化
-		this.distributaion = GameObject.Instantiate (this.distributionPrefab);
+		this.distributaion = GameObject.Instantiate(this.distributionPrefab);
+		this.distributionText = GameObject.Instantiate(this.distributionTextPrefab);
+
 		//トピックで取った位置をセット
 		this.distributaion.transform.position = new Vector3( -(float)placeConceptMsg.y, -0.15f, (float)placeConceptMsg.x);
+		this.distributionText.transform.position = new Vector3(-(float)placeConceptMsg.y, 0.5f, (float)placeConceptMsg.x);
+
+		this.distributionText.GetComponent<TextMesh>().text = "test text";
+
 		//dist:正規分布
 		dist = new NormalDistribution();
 		dist.x1Var = (float)placeConceptMsg.vx;

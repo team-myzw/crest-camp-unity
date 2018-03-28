@@ -102830,6 +102830,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114749187219348520, guid: a54a4d0ec1cd78644a36f970aa56a0a1,
+        type: 2}
+      propertyPath: distributionTextPrefab
+      value: 
+      objectReference: {fileID: 1566434277815396, guid: fa0520f45ce70984bb326eeecfd0a549,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a54a4d0ec1cd78644a36f970aa56a0a1, type: 2}
   m_IsPrefabParent: 0
