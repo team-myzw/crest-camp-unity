@@ -70,8 +70,8 @@ public class GraphScript : MonoBehaviour, IRosMsgReceiveHandler
 	private void SetPoint(ref ParticleSystem.Particle p, float x, float z)
 	{
 		p.position = new Vector3(x, 0f, z);
-		p.color = pointColor;
-		p.size = pointSize;
+		p.startColor = pointColor;
+		p.startSize = pointSize;
 	}
 
 	private void CalculateProbabilities()
