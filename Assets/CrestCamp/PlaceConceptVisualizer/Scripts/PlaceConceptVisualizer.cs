@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using SIGVerse.Competition.CrestCamp;
-public class GraphScript : MonoBehaviour, IRosMsgReceiveHandler
+
+public class PlaceConceptVisualizer : MonoBehaviour, IRosMsgReceiveHandler
 {
 	public float xmin = -3f;
 	public float xmax = 3f;

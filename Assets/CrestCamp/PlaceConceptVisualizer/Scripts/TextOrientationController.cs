@@ -5,6 +5,13 @@ using UnityEditor;
 
 public class TextOrientationController : MonoBehaviour
 {
+	private Vector3 cameraPosition;
+
+	private void OnEnable()
+	{
+		this.cameraPosition = new Vector3();
+	}
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -14,7 +21,19 @@ public class TextOrientationController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Vector3 sceneCameraPosition = SceneView.lastActiveSceneView.camera.transform.position;
-		this.transform.localRotation = Quaternion.LookRotation (sceneCameraPosition);
+		if (SceneView.lastActiveSceneView == null)
+		{
+			if(Camera.current != null)
+			{
+				this.cameraPosition = Camera.current.transform.position;
+			}
+		}
+		else
+		{
+			this.cameraPosition = SceneView.lastActiveSceneView.camera.transform.position;
+		}
+		Vector3 direction = this.cameraPosition - this.transform.position;
+		direction.y = 0.0f;
+		this.transform.rotation = Quaternion.LookRotation(direction);
 	}
 }
