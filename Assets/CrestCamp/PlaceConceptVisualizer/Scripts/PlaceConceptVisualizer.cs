@@ -94,7 +94,7 @@ public class PlaceConceptVisualizer : MonoBehaviour, IRosMsgReceiveHandler
 		changed = false;
 	}
 
-	public void OnReceiveRosMessage(SIGVerse.ROSBridge.CrestCamp.PlaceConceptMsg placeConceptMsg)
+	public void OnReceiveRosMessage(SIGVerse.RosBridge.CrestCamp.PlaceConceptMsg placeConceptMsg)
 	{
 		pointColor =new Color(Random.value, Random.value, Random.value, 1.0f);
 

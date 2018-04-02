@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using SIGVerse.RosBridge;
+using System.Collections.Generic;
 
 namespace SIGVerse.Competition.CrestCamp
 {
 	public interface IRosMarkerMsgReceiveHandler : IEventSystemHandler
 	{
-		void OnReceiveMarkerRosMessage(ROSBridge.visualization_msgs.Marker markerMsg);
+		void OnReceiveMarkerRosMessage(RosBridge.visualization_msgs.Marker markerMsg);
 	}
 
-	public class MarkerSubMessage : RosSubMessage<ROSBridge.visualization_msgs.Marker>
+	public class MarkerSubMessage : RosSubMessage<RosBridge.visualization_msgs.Marker>
 	{
-		override public void SubscribeMessageCallback(ROSBridge.visualization_msgs.Marker markerMsg)
+		public List<GameObject> destinations;
+
+		override protected void SubscribeMessageCallback(RosBridge.visualization_msgs.Marker markerMsg)
 		{
 			foreach (GameObject destination in this.destinations)
 			{

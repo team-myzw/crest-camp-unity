@@ -1,17 +1,21 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using SIGVerse.Common;
+using SIGVerse.RosBridge;
+using System.Collections.Generic;
 
 namespace SIGVerse.Competition.CrestCamp
 {
 	public interface IRosMsgReceiveHandler : IEventSystemHandler
 	{
-		void OnReceiveRosMessage(ROSBridge.CrestCamp.PlaceConceptMsg placeConceptMsg);
+		void OnReceiveRosMessage(RosBridge.CrestCamp.PlaceConceptMsg placeConceptMsg);
 	}
 
-	public class PlaceConceptSubMessage : RosSubMessage<ROSBridge.CrestCamp.PlaceConceptMsg>
+	public class PlaceConceptSubMessage : RosSubMessage<RosBridge.CrestCamp.PlaceConceptMsg>
 	{
-		override public void SubscribeMessageCallback(ROSBridge.CrestCamp.PlaceConceptMsg placeConceptMsg)
+		public List<GameObject> destinations;
+
+		override protected void SubscribeMessageCallback(RosBridge.CrestCamp.PlaceConceptMsg placeConceptMsg)
 		{
 			foreach(GameObject destination in this.destinations)
 			{

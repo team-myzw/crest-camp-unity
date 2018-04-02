@@ -3,8 +3,8 @@ using UnityEngine;
 using System;
 using System.Collections;
 using SIGVerse.Common;
-using SIGVerse.SIGVerseROSBridge;
-using SIGVerse.ROSBridge.geometry_msgs;
+using SIGVerse.SIGVerseRosBridge;
+using SIGVerse.RosBridge.geometry_msgs;
 using System.Collections.Generic;
 using System.Threading;
 
@@ -67,7 +67,7 @@ namespace SIGVerse.ToyotaHSR
 		private System.Net.Sockets.TcpClient tcpClient = null;
 		private System.Net.Sockets.NetworkStream networkStream = null;
 
-		private SIGVerseROSBridgeMessage<TransformStamped[]> transformStampedMsg = null;
+		private SIGVerseRosBridgeMessage<TransformStamped[]> transformStampedMsg = null;
 
 		private List<TfInfo> localTfInfoList = new List<TfInfo>();
 
@@ -111,14 +111,14 @@ namespace SIGVerse.ToyotaHSR
 				this.sigverseBridgePort = ConfigManager.Instance.configInfo.sigverseBridgePort;
 			}
 
-			this.tcpClient = HSRCommon.GetSIGVerseRosbridgeConnection(this.rosBridgeIP, this.sigverseBridgePort);
+			this.tcpClient = SIGVerseRosBridgeConnection.GetConnection(this.rosBridgeIP, this.sigverseBridgePort);
 
 			this.networkStream = this.tcpClient.GetStream();
 
 			this.networkStream.ReadTimeout = 100000;
 			this.networkStream.WriteTimeout = 100000;
 
-			this.transformStampedMsg = new SIGVerseROSBridgeMessage<TransformStamped[]>("publish", this.topicName, "sigverse/TfList", null);
+			this.transformStampedMsg = new SIGVerseRosBridgeMessage<TransformStamped[]>("publish", this.topicName, "sigverse/TfList", null);
 		}
 
 		void OnDestroy()

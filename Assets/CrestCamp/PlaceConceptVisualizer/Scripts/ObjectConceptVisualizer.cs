@@ -18,7 +18,7 @@ namespace SIGVerse.Competition.CrestCamp
 		void Update() {
 		}
 
-		public void OnReceiveMarkerRosMessage(ROSBridge.visualization_msgs.Marker markerMsg)
+		public void OnReceiveMarkerRosMessage(RosBridge.visualization_msgs.Marker markerMsg)
 		{
 			this.objectConceptText = GameObject.Instantiate(this.objectConceptTextPrefab);
 
