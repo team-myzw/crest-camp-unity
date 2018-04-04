@@ -24,7 +24,7 @@ namespace SIGVerse.ToyotaHSR
 
 		//------------------------
 
-		private GameObject collisionEffect;
+		//private GameObject collisionEffect;
 
 		private List<Collider> exclusionColliderList;
 
@@ -37,7 +37,7 @@ namespace SIGVerse.ToyotaHSR
 
 		protected void Awake()
 		{
-			this.collisionEffect = (GameObject)Resources.Load(CompetitionUtils.CollisionEffectPath);
+			//this.collisionEffect = (GameObject)Resources.Load(CompetitionUtils.CollisionEffectPath);
 
 			this.exclusionColliderList = new List<Collider>();
 
@@ -110,25 +110,25 @@ namespace SIGVerse.ToyotaHSR
 				", Part=" +collision.contacts[0].thisCollider.name + ", Collided object=" + SIGVerseUtils.GetHierarchyPath(collision.collider.transform));
 
 			// Effect
-			GameObject effect = MonoBehaviour.Instantiate(this.collisionEffect);
+			//GameObject effect = MonoBehaviour.Instantiate(this.collisionEffect);
 			
-			Vector3 contactPoint = SIGVerseUtils.CalcContactAveragePoint(collision);
+			//Vector3 contactPoint = SIGVerseUtils.CalcContactAveragePoint(collision);
 
-			effect.transform.position = contactPoint;
-			effect.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+			//effect.transform.position = contactPoint;
+			//effect.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
-			Destroy(effect, 1.0f);
+			//Destroy(effect, 1.0f);
 
 			// Send the collision notification
-			foreach(GameObject destination in this.collisionNotificationDestinations)
-			{
-				ExecuteEvents.Execute<IHSRCollisionHandler>
-				(
-					target: destination,
-					eventData: null,
-					functor: (reciever, eventData) => reciever.OnHsrCollisionEnter(collision, collisionVelocity,  0.5f)
-				);
-			}
+			//foreach(GameObject destination in this.collisionNotificationDestinations)
+			//{
+			//	ExecuteEvents.Execute<IHSRCollisionHandler>
+			//	(
+			//		target: destination,
+			//		eventData: null,
+			//		functor: (reciever, eventData) => reciever.OnHsrCollisionEnter(collision, collisionVelocity,  0.5f)
+			//	);
+			//}
 
 			this.collidedTime = Time.time;
 		}
